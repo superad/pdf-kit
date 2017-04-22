@@ -15,7 +15,7 @@ java根据模板动态生成PDF文件
        4、能动态生成业务图片
        5、完成PDF的分页和图片的嵌入
 四、主要代码结构说明：
-      1、component包：PDF生成的组件 对外提供的是PDFKit工具类和HeaderFooterBuilder接口，其中PDFKit负责PDF的生成，HeaderFooterBuilder负责自定义页眉页脚信息。
+      1、component包：PDF生成的组件 对外提供的是PDFKit工具类和HeaderFooterBuilder接口， 其中PDFKit负责PDF的生成，HeaderFooterBuilder负责自定义页眉页脚信息。
       2、builder包：负责PDF模板之外的额外信息填写，这里主要是页眉页脚的定制。
       3、chart包：JFreeChart的画图工具包，目前只有一个线形图。
       4、test包：测试工具类
