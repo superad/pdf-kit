@@ -1,0 +1,82 @@
+.metadata/
+Servers/
+
+# Neuron specified
+dist/
+upgrade/
+test/node/
+
+# Folders for Dev &
+dev/
+env/
+
+# cortex
+.cortex/build/
+.cortex/latest-pack
+neurons
+
+# Numerous always-ignore extensions
+*.bak
+*.patch
+*.diff
+*.err
+*.orig  # temp file for git conflict merging
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.sass-cache
+*.tmp.html
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+
+# Mac
+.DS_Store
+._*
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+*.sublime-project
+*.sublime-workspace
+nbproject
+thumbs.db
+
+# Maven
+#log/
+target/
+
+# Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+node_modules
+build/
+reference/
+jscoverage_lib/
+temp/
+*-notrack/
+
+# Filter old Folders
+unit-test/
+old/
+*-old/
+
+# custom
+test-output/
+rebel.xml
