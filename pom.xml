@@ -10,6 +10,11 @@
     <name>${project.artifactId}</name>
     <version>1.0-SNAPSHOT</version>
 
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
 
     <dependencies>
         <!--pdf生成工具类-->
@@ -125,6 +130,30 @@
             </plugin>
         </plugins>
     </build>
+
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <scm>
+        <tag>master</tag>
+        <url>https://github.com/superad/pdf-kit.git</url>
+        <connection>scm:git:https://github.com/superad/pdf-kit.git</connection>
+        <developerConnection>scm:git:https://github.com/superad/pdf-kit.git</developerConnection>
+    </scm>
+    <developers>
+        <developer>
+            <name>fangguangming</name>
+            <email>563508194@qq.com</email>
+            <organization>meituandianping</organization>
+        </developer>
+    </developers>
+
+
 
 
 </project>
