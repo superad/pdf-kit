@@ -21,11 +21,15 @@
     <div><p>iText官网:${ITEXTUrl}</p></div>
     <div><p>FreeMarker官网:${freeMarkerUrl}</p></div>
     <div><p>JFreeChart教程:${JFreeChartUrl}</p></div>
-    <div>列表值:</div>
+    <!--外部链接-->
+    <p>静态logo图</p>
     <div>
-        <#list scores as item>
-            <div><p>${item}</p></div>
-        </#list>
+        <img src="${imageUrl}" alt="美团点评" width="110" height="20.8"/>
+    </div>
+    <!--动态生成的图片-->
+    <p>气温变化对比图</p>
+    <div>
+        <img src="${picUrl}" alt="我的图片" width="500" height="270"/>
     </div>
 </div>
 <!--第一页结束-->
@@ -34,16 +38,13 @@
 <!--第二页开始-->
 <div class="page">
     <div>第二页开始了</div>
-    <!--外部链接-->
-    <p>百度图标</p>
+    <div>列表值:</div>
     <div>
-        <img src="${imageUrl}" alt="百度图标" width="270" height="129"/>
+    <#list scores as item>
+        <div><p>${item}</p></div>
+    </#list>
     </div>
-    <!--动态生成的图片-->
-    <p>气温变化对比图</p>
-    <div>
-        <img src="${picUrl}" alt="我的图片" width="500" height="270"/>
-    </div>
+
 </div>
 
 

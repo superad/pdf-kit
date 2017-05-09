@@ -66,7 +66,7 @@ public class ReportKit360 {
         templateBO.setFreeMarkerUrl("http://www.zheng-hang.com/chm/freemarker2_3_24/ref_directive_if.html");
         templateBO.setITEXTUrl("http://developers.itextpdf.com/examples-itext5");
         templateBO.setJFreeChartUrl("http://www.yiibai.com/jfreechart/jfreechart_referenced_apis.html");
-        templateBO.setImageUrl("https://ss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/logo/bd_logo1_31bdc765.png");
+        templateBO.setImageUrl("http://mss.vip.sankuai.com/v1/mss_74e5b6ab17f44f799a524fa86b6faebf/360report/logo_1.png");
         List<String> scores=new ArrayList<String>();
         scores.add("90");
         scores.add("95");

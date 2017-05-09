@@ -20,6 +20,7 @@
     <#list scores as item>
         <div>${item}</div>
     </#list>
+
 </div>
 <!--第一页结束-->
 <!---分页标记-->
@@ -27,7 +28,7 @@
 <!--第二页开始-->
 <div class="page">
     <div>第二页开始了</div>
-   <img src="${imageUrl}" alt="百度图标" width="270" height="129"/>
+    <img src="${imageUrl}" alt="百度图标" width="270" height="129"/>
 </div>
 
 
