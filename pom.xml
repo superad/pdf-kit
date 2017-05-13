@@ -8,7 +8,7 @@
     <artifactId>pdf-kit</artifactId>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-release</version>
 
     <parent>
         <groupId>org.sonatype.oss</groupId>
@@ -175,6 +175,16 @@
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
             </distributionManagement>
+            <!--<distributionManagement>-->
+                <!--<snapshotRepository>-->
+                    <!--<id>oss</id>-->
+                    <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
+                <!--</snapshotRepository>-->
+                <!--<repository>-->
+                    <!--<id>oss</id>-->
+                    <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
+                <!--</repository>-->
+            <!--</distributionManagement>-->
         </profile>
     </profiles>
 
