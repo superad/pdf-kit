@@ -172,7 +172,7 @@
                 </snapshotRepository>
                 <repository>
                     <id>oss</id>
-                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
             </distributionManagement>
         </profile>
@@ -187,7 +187,7 @@
         </license>
     </licenses>
     <scm>
-        <tag>master</tag>
+        <tag>alpha</tag>
         <url>https://github.com/superad/pdf-kit.git</url>
         <connection>scm:git:https://github.com/superad/pdf-kit.git</connection>
         <developerConnection>scm:git:https://github.com/superad/pdf-kit.git</developerConnection>
