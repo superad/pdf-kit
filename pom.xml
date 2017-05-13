@@ -175,16 +175,6 @@
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
                 </repository>
             </distributionManagement>
-            <!--<distributionManagement>-->
-                <!--<snapshotRepository>-->
-                    <!--<id>oss</id>-->
-                    <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
-                <!--</snapshotRepository>-->
-                <!--<repository>-->
-                    <!--<id>oss</id>-->
-                    <!--<url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>-->
-                <!--</repository>-->
-            <!--</distributionManagement>-->
         </profile>
     </profiles>
 
