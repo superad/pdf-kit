@@ -27,9 +27,12 @@ import java.util.List;
 public abstract class LineChart {
 
 
-    protected  int width=500;
+    private  int width;
 
-    protected  int height=270;
+    private  int height;
+
+    private static int   defaultWidth=500;
+    private static int  defaultHeight=220;
 
     private String fileName;
 
@@ -112,7 +115,7 @@ public abstract class LineChart {
         //初始化表格样式
         initDefaultPlot(lineChartObject,dataSet);
 
-        ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, this.width ,this.height);
+        ChartUtilities.saveChartAsJPEG(lineChart ,lineChartObject, getWidth() ,getHeight());
 
         return lineChart.getAbsolutePath();
 
@@ -164,9 +167,27 @@ public abstract class LineChart {
         return null;
     }
 
+    public int getWidth() {
+        if(width==0){
+            return defaultWidth;
+        }
+        return width;
+    }
 
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
+    public int getHeight() {
+        if(height==0){
+            return defaultHeight;
+        }
+        return height;
+    }
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
 
     public String getFileName() {
         return fileName;

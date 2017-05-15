@@ -6,7 +6,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import pdf.kit.component.PDFHeaderFooter;
 import pdf.kit.component.PDFKit;
 import pdf.kit.component.chart.Line;
-import pdf.kit.component.chart.impl.TemperatureLineChart;
+import pdf.kit.component.chart.impl.DefaultLineChart;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -73,7 +73,9 @@ public class ReportKit360 {
         scores.add("98");
         templateBO.setScores(scores);
         List<Line> lineList=getTemperatureLineList();
-        TemperatureLineChart lineChart=new TemperatureLineChart();
+        DefaultLineChart lineChart=new DefaultLineChart();
+        lineChart.setHeight(500);
+        lineChart.setWidth(300);
         String picUrl=lineChart.draw(lineList,0);
         templateBO.setPicUrl(picUrl);
         String path= kit.createPDF(templateBO,"hello.pdf");

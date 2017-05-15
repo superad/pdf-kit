@@ -11,20 +11,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.ui.TextAnchor;
 import pdf.kit.component.chart.LineChart;
 
-import java.awt.*;
-
 /**
- * Created by fgm on 2017/4/7.
+ * Created by fgm on 2017/5/15.
+ * 设置默认的画图工具
+ *
  */
 @Slf4j
-public class TemperatureLineChart extends LineChart {
+public class DefaultLineChart extends LineChart {
+    private int width;
+    private int height;
+    protected void initPlot(JFreeChart chart, DefaultCategoryDataset dataSet) {
 
-
-    public TemperatureLineChart(){
-        this.setFileName("temperature.png");
-    }
-
-    protected  void initPlot(JFreeChart chart, DefaultCategoryDataset dataSet){
         CategoryPlot plot = chart.getCategoryPlot();
         super.initDefaultXYPlot(plot);
         //设置节点的值显示
@@ -35,27 +32,30 @@ public class TemperatureLineChart extends LineChart {
                 new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, TextAnchor.BASELINE_CENTER));
         plot.setRenderer(lineRender);
 
-        LineAndShapeRenderer renderer = (LineAndShapeRenderer) plot.getRenderer();
-        BasicStroke realLine = new BasicStroke(1.8f); // 设置实线
-        for (int i = 0; i < dataSet.getRowCount(); i++) {
-            //分组线条的名称
-            String rowKey=(String)dataSet.getRowKey(i);
-            renderer.setSeriesStroke(i, realLine); // 利用实线绘制
-            if(i%2==0){
-                Color companyLineColor=new Color(0,88,162);
-                renderer.setSeriesPaint(i, companyLineColor);
-            }else{
-                Color selfLineColor=Color.RED;
-                renderer.setSeriesPaint(i, selfLineColor);
-            }
-
-
+    }
+    @Override
+    public int getWidth() {
+        if(width==0){
+            return super.getWidth();
         }
-
-
+        return width;
     }
 
+    @Override
+    public void setWidth(int width) {
+        this.width = width;
+    }
 
+    @Override
+    public int getHeight() {
+        if(height==0){
+            return super.getHeight();
+        }
+        return height;
+    }
 
-
+    @Override
+    public void setHeight(int height) {
+        this.height = height;
+    }
 }
