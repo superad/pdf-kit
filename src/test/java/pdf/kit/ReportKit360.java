@@ -5,7 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import pdf.kit.component.PDFHeaderFooter;
 import pdf.kit.component.PDFKit;
-import pdf.kit.component.chart.Line;
+import pdf.kit.component.chart.ScatterPlotChart;
+import pdf.kit.component.chart.model.XYLine;
 import pdf.kit.component.chart.impl.DefaultLineChart;
 
 import java.util.ArrayList;
@@ -19,10 +20,10 @@ import java.util.List;
 @Slf4j
 public class ReportKit360 {
 
-    public static List<Line> getTemperatureLineList() {
-        List<Line> list= Lists.newArrayList();
+    public static List<XYLine> getTemperatureLineList() {
+        List<XYLine> list= Lists.newArrayList();
         for(int i=1;i<=7;i++){
-            Line line=new Line();
+            XYLine line=new XYLine();
             float random=Math.round(Math.random()*10);
             line.setXValue("星期"+i);
             line.setYValue(20+random);
@@ -30,7 +31,7 @@ public class ReportKit360 {
             list.add(line);
         }
         for(int i=1;i<=7;i++){
-            Line line=new Line();
+            XYLine line=new XYLine();
             float random=Math.round(Math.random()*10);
             line.setXValue("星期"+i);
             line.setYValue(20+random);
@@ -72,12 +73,17 @@ public class ReportKit360 {
         scores.add("95");
         scores.add("98");
         templateBO.setScores(scores);
-        List<Line> lineList=getTemperatureLineList();
+        //折线图
+        List<XYLine> lineList=getTemperatureLineList();
         DefaultLineChart lineChart=new DefaultLineChart();
         lineChart.setHeight(500);
         lineChart.setWidth(300);
         String picUrl=lineChart.draw(lineList,0);
         templateBO.setPicUrl(picUrl);
+
+        //散点图
+        String scatterUrl=ScatterPlotChart.draw(ScatterPlotChartTest.getData(),1,"他评得分(%)","自评得分(%)");
+        templateBO.setScatterUrl(scatterUrl);
         String path= kit.createPDF(templateBO,"hello.pdf");
         System.out.println(path);
 

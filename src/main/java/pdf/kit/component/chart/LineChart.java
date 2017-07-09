@@ -1,7 +1,6 @@
 package pdf.kit.component.chart;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.exception.ExceptionUtils;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
@@ -12,11 +11,11 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import pdf.kit.component.chart.model.XYLine;
 import pdf.kit.util.FontUtil;
 
 import java.awt.*;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 
@@ -37,18 +36,18 @@ public abstract class LineChart {
     private String fileName;
 
 
-    public String draw(List<Line> lineList, int picId){
+    public String draw(List<XYLine> lineList, int picId){
         return draw("","","",lineList,picId);
     }
 
     public  String draw(String title, String xLabel, String yLabel,
-                        List<Line> lineList, int picId){
+                        List<XYLine> lineList, int picId){
 
         if(lineList==null || lineList.size()==0){
             return "";
         }
         DefaultCategoryDataset dataSet=new DefaultCategoryDataset();
-        for(Line line:lineList){
+        for(XYLine line:lineList){
             dataSet.addValue(line.getYValue(),line.getGroupName(),line.getXValue());
         }
         try {
@@ -69,15 +68,15 @@ public abstract class LineChart {
     protected void initDefaultXYPlot(CategoryPlot plot){
         // 设置X轴
         CategoryAxis domainAxis = plot.getDomainAxis();
-        domainAxis.setLabelFont(getFont(Font.PLAIN,13)); // 设置横轴字体
-        domainAxis.setTickLabelFont(getFont(Font.PLAIN,13));// 设置坐标轴标尺值字体
+        domainAxis.setLabelFont(FontUtil.getFont(Font.PLAIN,13)); // 设置横轴字体
+        domainAxis.setTickLabelFont(FontUtil.getFont(Font.PLAIN,13));// 设置坐标轴标尺值字体
         domainAxis.setLowerMargin(0.01);// 左边距 边框距离
         domainAxis.setUpperMargin(0.06);// 右边距 边框距离,防止最后边的一个数据靠近了坐标轴。
         domainAxis.setMaximumCategoryLabelLines(10);
         domainAxis.setCategoryLabelPositions(CategoryLabelPositions.DOWN_45);// 横轴 lable 的位置 横轴上的 Lable 45度倾斜 DOWN_45
         // 设置Y轴
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
-        rangeAxis.setLabelFont(getFont(Font.PLAIN, 13));
+        rangeAxis.setLabelFont(FontUtil.getFont(Font.PLAIN, 13));
         rangeAxis.setAutoRangeMinimumSize(1);   //最小跨度
         rangeAxis.setUpperMargin(0.18);//上边距,防止最大的一个数据靠近了坐标轴。
         rangeAxis.setLowerBound(18);   //最小值显示18
@@ -124,12 +123,12 @@ public abstract class LineChart {
 
     private  void  initDefaultPlot(JFreeChart  chart,DefaultCategoryDataset dataSet){
         //设置公共颜色
-        chart.getTitle().setFont(getFont(Font.BOLD, 15)); // 设置标题字体
-        chart.getLegend().setItemFont(getFont(Font.PLAIN, 13));// 设置图例类别字体
+        chart.getTitle().setFont(FontUtil.getFont(Font.PLAIN, 15)); // 设置标题字体
+        chart.getLegend().setItemFont(FontUtil.getFont(Font.PLAIN, 13));// 设置图例类别字体
         chart.setBackgroundPaint(Color.white);// 设置背景色
         CategoryPlot plot = chart.getCategoryPlot();
         plot.setNoDataMessage("无对应的数据。");
-        plot.setNoDataMessageFont(getFont(Font.PLAIN, 13));//字体的大小
+        plot.setNoDataMessageFont(FontUtil.getFont(Font.PLAIN, 13));//字体的大小
         plot.setNoDataMessagePaint(Color.RED);//字体颜色
         //设置自定义颜色
         initPlot(chart,dataSet);
@@ -137,35 +136,6 @@ public abstract class LineChart {
     }
 
 
-    /**
-     * @description 加载自定义字体
-     */
-    public static Font loadFont(String fontFileName,int style,float fontSize) throws IOException {
-        FileInputStream fis=null;
-        try{
-
-            File file = new File(fontFileName);
-            fis= new FileInputStream(file);
-            Font dynamicFont = Font.createFont(style, fis);
-            Font dynamicFontPt = dynamicFont.deriveFont(fontSize);
-
-            return dynamicFontPt;
-        }catch(Exception e){
-            return new Font("宋体", Font.PLAIN, 14);
-        }finally{
-            fis.close();
-        }
-    }
-    public static Font getFont(int style,float fontSize){
-        try {
-            String fontPath = FontUtil.getFontPath("SIMLI.TTF");
-            Font font = loadFont(fontPath,style,fontSize);
-            return font;
-        } catch (IOException e) {
-            log.error("字体加载异常{}",ExceptionUtils.getFullStackTrace(e));
-        }
-        return null;
-    }
 
     public int getWidth() {
         if(width==0){

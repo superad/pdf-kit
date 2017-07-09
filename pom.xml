@@ -47,9 +47,9 @@
         </dependency>
         <!--jfreechart-->
         <dependency>
-            <groupId>jfreechart</groupId>
+            <groupId>jfree</groupId>
             <artifactId>jfreechart</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.2</version>
         </dependency>
 
         <!--log-->

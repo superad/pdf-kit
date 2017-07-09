@@ -31,6 +31,11 @@
     <div>
         <img src="${picUrl}" alt="我的图片" width="500" height="270"/>
     </div>
+    <!--jfreechart 散点图-->
+    <p>发展建议分布图</p>
+    <div>
+        <img src="${scatterUrl}" alt="散点图" width="700" height="600"/>
+    </div>
 </div>
 <!--第一页结束-->
 <!---分页标记-->

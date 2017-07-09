@@ -24,5 +24,7 @@ public class TemplateBO {
 
     private String picUrl;
 
+    private String scatterUrl;
+
 
 }
