@@ -41,7 +41,7 @@ public class ReportKit360 {
         return list;
     }
 
-    public  String createPDF(Object data, String fileName){
+    public  String createPDF(String templatePath,Object data, String fileName){
         //pdf保存路径
         try {
             //设置自定义PDF页眉页脚工具类
@@ -50,6 +50,7 @@ public class ReportKit360 {
             kit.setHeaderFooterBuilder(headerFooter);
             //设置输出路径
             kit.setSaveFilePath("/Users/fgm/Desktop/pdf/hello.pdf");
+
             String saveFilePath=kit.exportToFile(fileName,data);
             return  saveFilePath;
         } catch (Exception e) {
@@ -84,7 +85,8 @@ public class ReportKit360 {
         //散点图
         String scatterUrl=ScatterPlotChart.draw(ScatterPlotChartTest.getData(),1,"他评得分(%)","自评得分(%)");
         templateBO.setScatterUrl(scatterUrl);
-        String path= kit.createPDF(templateBO,"hello.pdf");
+        String templatePath="/Users/fgm/workspaces/fix/pdf-kit/src/test/resources/templates";
+        String path= kit.createPDF(templatePath,templateBO,"hello.pdf");
         System.out.println(path);
 
 

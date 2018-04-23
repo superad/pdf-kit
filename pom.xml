@@ -10,6 +10,12 @@
     <name>${project.artifactId}</name>
     <version>1.1-RELEASE</version>
 
+    <properties>
+        <java.src.version>1.7</java.src.version>
+        <java.target.version>1.7</java.target.version>
+        <project.encoding>UTF-8</project.encoding>
+    </properties>
+
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
@@ -122,6 +128,17 @@
                     </resource>
                 </resources>
                 <plugins>
+                    <!--compile-->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>3.5.1</version>
+                        <configuration>
+                            <source>${java.src.version}</source>
+                            <target>${java.target.version}</target>
+                            <encoding>${project.encoding}</encoding>
+                        </configuration>
+                    </plugin>
                     <!-- Source -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
@@ -193,6 +210,7 @@
         <connection>scm:git:https://github.com/superad/pdf-kit.git</connection>
         <developerConnection>scm:git:https://github.com/superad/pdf-kit.git</developerConnection>
     </scm>
+
 
 
     <developers>
