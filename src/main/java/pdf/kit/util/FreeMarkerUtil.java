@@ -18,6 +18,8 @@ import java.io.StringWriter;
  */
 public class FreeMarkerUtil {
 
+    private static  final String WINDOWS_SPLIT="//";
+
     /**
      * @description 获取模板
      */
@@ -50,16 +52,20 @@ public class FreeMarkerUtil {
         if(StringUtils.isEmpty(templatePath)){
             return "";
         }
-        String path=templatePath.substring(0,templatePath.lastIndexOf("/"));
-        return path;
+        if(templatePath.contains(WINDOWS_SPLIT)){
+            return templatePath.substring(0,templatePath.lastIndexOf(WINDOWS_SPLIT));
+        }
+        return templatePath.substring(0,templatePath.lastIndexOf("/"));
     }
 
     private static String getTemplateName(String templatePath) {
         if(StringUtils.isEmpty(templatePath)){
             return "";
         }
-        String fileName=templatePath.substring(templatePath.lastIndexOf("/")+1);
-        return fileName;
+        if(templatePath.contains(WINDOWS_SPLIT)) {
+           return  templatePath.substring(templatePath.lastIndexOf(WINDOWS_SPLIT)+1);
+        }
+        return templatePath.substring(templatePath.lastIndexOf("/")+1);
     }
 
     /**
