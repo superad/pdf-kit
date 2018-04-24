@@ -35,6 +35,8 @@ public class FreeMarkerUtil {
         }
         Configuration config = new Configuration(Configuration.VERSION_2_3_25);
         config.setDefaultEncoding(UTF_8);
+        config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
+        config.setLogTemplateExceptions(false);
         FileTemplateLoader fileTemplateLoader=null;
         if(null!=fileTemplateLoaderCache.get(templateFilePath)){
             fileTemplateLoader=fileTemplateLoaderCache.get(templateFilePath);
@@ -46,8 +48,6 @@ public class FreeMarkerUtil {
             throw new FreeMarkerException("fileTemplateLoader init error!",e);
         }
         config.setTemplateLoader(fileTemplateLoader);
-        config.setTemplateExceptionHandler(TemplateExceptionHandler.RETHROW_HANDLER);
-        config.setLogTemplateExceptions(false);
         configurationCache.put(templateFilePath,config);
         return config;
 
